@@ -1,4 +1,4 @@
-/**
+/** 
  *  --------------------------- 3 common ways to create a new empty object: -----------------------------------
  * */
 
@@ -109,7 +109,7 @@ console.log("driver's top speed : " + driver.topSpeed);
 
 /**
  * BASIC CONSTRUCTORS ***********************************************
- * * prefixing a call to a constructor function with the keyword "new";
+ * *
  * * inside a constructor, the keyword "this" references the new object that's being created.
  * * Revisiting object creation, a basic constructor may look as follows:
  */

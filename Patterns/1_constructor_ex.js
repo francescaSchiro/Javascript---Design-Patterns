@@ -1,3 +1,4 @@
+'use strict';
 // Exercises with Constructor and Prototype
 
 function MyObj(a) {
