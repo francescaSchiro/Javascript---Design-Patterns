@@ -2,26 +2,28 @@
 
 ## Learning JavaScript Design Patterns
 
-## A (book)[https://addyosmani.com/resources/essentialjsdesignpatterns/book/] by Addy Osmani
+_A (book)[https://addyosmani.com/resources/essentialjsdesignpatterns/book/] by Addy Osmani_
 
 Practice of the **JavaScript Design Patterns**
 
 > - Run any file from your terminal with the command: `node *filename.js*`
 
+---
+
 # 1. The Constructor Pattern
 
-## _1_constructor.js_
+1_constructor.js
 
 > a "blueprint" for creating many objects of the same "type".
 
-**CONSTRUCTOR (VS regular functions)**
-    - prefixing a call to a constructor function with the keyword "**new**";
-    - By convention, CONSTRUCTOR function names start with CAPITAL LETTERS;
-    - inside a constructor function, you may see properties being set using "this";
-    - you may also see methods being created using "this" and anonymous functions;
-    - a constructor wont return anything
+- **CONSTRUCTOR (VS regular functions)**
+  - prefixing a call to a constructor function with the keyword "**new**";
+  - By convention, CONSTRUCTOR function names start with CAPITAL LETTERS;
+  - inside a constructor function, you may see properties being set using "this";
+  - you may also see methods being created using "this" and anonymous functions;
+  - a constructor wont return anything
 
-Eg.
+**Eg.**
 
 ```javascript
 function MyObj(a) {
@@ -54,12 +56,12 @@ _2_module.js_
 
 > encapsulates "privacy", state and organization using closures. It provides a way of wrapping a mix of public and private methods and variables, protecting pieces from leaking into the global scope and accidentally colliding with another developer's interface.
 
-- - With this pattern, only a public API is returned, keeping everything else within the closure private.
-- - This gives us a clean solution for shielding logic.
-- - The pattern utilizes an immediately-invoked function expression (IIFE )
-- - Within the Module pattern, **variables or methods declared** are **only available inside the module itself thanks to closure**. Variables or methods defined **within the returning object** however are available **to everyone**.
+- With this pattern, only a public API is returned, keeping everything else within the closure private.
+- This gives us a clean solution for shielding logic.
+- The pattern utilizes an immediately-invoked function expression (IIFE )
+- Within the Module pattern, **variables or methods declared** are **only available inside the module itself thanks to closure**. Variables or methods defined **within the returning object** however are available **to everyone**.
 
-Eg.
+**Eg.**
 
 ```javascript
 var testModule = (function() {
@@ -82,28 +84,65 @@ testModule.incrementCounter();
 
 # 3. The Revaling Module Pattern
 
-_2_revealingModule.js_
+_3_revealingModule.js_
+
+A slightly improved version of the Module Pattern.
+An updated pattern where we would simply **define all of our functions and variables in the private scope**
+and return an anonymous object with pointers to the private functionality we wished to reveal as public
+
+**Eg.**
+
+```javascript
+var myRevealingModule = (function() {
+  var privateVar = "Ben Cherry",
+    publicVar = "HeyThere!";
+  function privateFunction() {
+    console.log("Name: " + privateVar);
+  }
+  function publicSetName(strName) {
+    privateVar = strName;
+  }
+  function publicGetName() {
+    privateFunction();
+  }
+  return {
+    setName: publicSetName,
+    greetings: publicVar,
+    getName: publicGetName
+  };
+})();
+```
 
 ---
 
-## EXERCISE with Constructor and RevealingModule Pattern 
-*1_PanelsExercise/panels.js*
+## EXERCISE with Constructor and RevealingModule Pattern
+
+_1_PanelsExercise/panels.js_
 
 - Create 5+ Panels;
 
-- Each Panel should have:
-  These PROPERTIES: - **id**: _string_, (guid)[https://stackoverflow.com/questions/105034/create-guid-uuid-in-javascript] - **label**: _string_, - **value**: _number_, - **selected**: _boolean_,
-  These METHODS: - **increment**: function() { _return_ value = value + 1 }, - function **decrement** () { _return_ value = value - 1 }, - function **getTitle** ( label, value ) { _return_ `${label}(${value})`}
+Each Panel should have:
+
+- These PROPERTIES:
+  - **id**: _string_, (guid)[https://stackoverflow.com/questions/105034/create-guid-uuid-in-javascript]
+  - **label**: _string_,
+  - **value**: _number_,
+  - **selected**: _boolean_,
+- These METHODS:
+  - **increment**: function() { _return_ value = value + 1 },
+  - function **decrement** () { _return_ value = value - 1 },
+  - function **getTitle** ( label, value ) { _return_ `${label}(${value})`}
 
 - **Special Cases:**
 
   - if ( **value > 50** ) { increment: function() { _return_ value = value + **5** }};
   - if Panel is selected (Panel.selected === true) change _background-color_;
 
-- **Methods to implement** (C R U D: *Create, Read, Update, Delete*)
+- **Methods to implement** (C R U D: _**C**reate, **R**ead, **U**pdate, **D**elete_)
+
   - **C** : Create. Add a Panel to the Panels [ *array* ], given(at least) a (label, value);
   - **R** : Read. getOne(by id) or All Panels from the Panels [ *array* ];
   - **U** : Update. Override value of a Panel.
   - **D** : Delete. Remove the selected Panel from the Array ( when Panel id is the same as the one selected Panels[ i ] remove from array );
 
-  ---
+  ***
