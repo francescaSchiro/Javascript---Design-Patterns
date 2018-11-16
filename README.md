@@ -2,7 +2,7 @@
 
 ## Learning JavaScript Design Patterns
 
-_A (book)[https://addyosmani.com/resources/essentialjsdesignpatterns/book/] by Addy Osmani_
+_A [book](https://addyosmani.com/resources/essentialjsdesignpatterns/book/) by Addy Osmani_
 
 Practice of the **JavaScript Design Patterns**
 
@@ -124,7 +124,7 @@ _1_PanelsExercise/panels.js_
 Each Panel should have:
 
 - These PROPERTIES:
-  - **id**: _string_, (guid)[https://stackoverflow.com/questions/105034/create-guid-uuid-in-javascript]
+  - **id**: _string_, [guid](https://stackoverflow.com/questions/105034/create-guid-uuid-in-javascript)
   - **label**: _string_,
   - **value**: _number_,
   - **selected**: _boolean_,
