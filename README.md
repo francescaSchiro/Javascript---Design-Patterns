@@ -2,7 +2,7 @@
 
 ## Learning JavaScript Design Patterns
 
-_A [book](https://addyosmani.com/resources/essentialjsdesignpatterns/book/) by Addy Osmani_
+A [book](https://addyosmani.com/resources/essentialjsdesignpatterns/book/) by Addy Osmani.
 
 Practice of the **JavaScript Design Patterns**
 
