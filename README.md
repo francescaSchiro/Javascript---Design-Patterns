@@ -115,9 +115,9 @@ var myRevealingModule = (function() {
 
 ---
 
-## EXERCISE with Constructor and RevealingModule Pattern
+# *** EXERCISE with Constructor and RevealingModule Pattern ***
 
-_1_PanelsExercise/panels.js_
+_1_PanelsExercise/index.js_
 
 - Create 5+ Panels;
 
@@ -145,4 +145,19 @@ Each Panel should have:
   - **U** : Update. Override value of a Panel.
   - **D** : Delete. Remove the selected Panel from the Array ( when Panel id is the same as the one selected Panels[ i ] remove from array );
 
-  ***
+> Folders orginized so that I have:
+  - constructor of the obj `Panel` in _models/Panel.js_ 
+  ( where I describe the obj Panel I'm going to instantiate with _new_ in my module method `addPanel()` )
+  - `panelsModule` to collect all my actions involving the panels (_panels.module.js_) ;
+  - a file of _utils/generic.js_ to keep all my useful functions (in this case just `guid()`);
+  - instructions to test in my _index.js_ ;
+  ** IMPORTANT! ** this exercise doesn't have any transpiler to read ES6. so to export/import between files I had to use these 2 lines in order to be able to run it with _node.js_:
+  ``` javascript
+  module.exports = Panel; // to export
+  const Panel = require("./models/Panel"); //to import
+   ```
+---
+
+# 4. The Factory Pattern
+
+_4_factory.js_
