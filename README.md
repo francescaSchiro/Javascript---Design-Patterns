@@ -164,4 +164,61 @@ Each Panel should have:
 
 _4_factory.js_
 
+(another) Creational pattern concerned with the notion of creating objects but it _doesn't explicitly require_ us to use **a constructor**.
+**Instead**: Factory can provide a generic interface for creating objects, where we can specify _the type of factory object_ we wish to be created.
 
+- **Step 2**: create _Constructors_ (like `Car` and `Truck`)
+
+```javascript
+function Car(options) {
+  this.doors = options.doors || 4;
+  this.state = options.state || "brand new";
+  this.color = options.color || "silver";
+}
+```
+
+- **Step 2**: create the factory function:
+
+```javascript
+function vehicleFactory() {}
+```
+
+- **Step 3**: "attatch" prop(filter that's going to tell the factory which type to render) and method to the `VehicleFactory.prototype` create the new instance of the `Car` or `Truck` constructor with the given _options_
+
+```javascript
+// prop
+VehicleFactory.prototype.vehicleConstructor = Car;
+
+// method
+VehicleFactory.prototype.createVehicle = function(options) {
+  switch (options.vehicleType) {
+    case "car":
+      this.vehicleConstructor = Car;
+      break;
+    case "truck":
+      this.vehicleConstructor = Truck;
+      break;
+  }
+  return new this.vehicleConstructor(options);
+};
+```
+
+- **Step 4**: create an instance of the `VehicleFactory` (so you don't have to go into prototype everytime when calling the `createVehicle()` method)
+
+```javascript
+var carFactory = new VehicleFactory();
+```
+
+- **Step 5**: use the instantiated carFactory's `createVehicle()` method to create a new instantiated object with given options.
+
+```javascript
+var car2 = carFactory.createVehicle({
+  vehicleType: "car",
+  color: "white",
+  doors: 1
+});
+```
+- **Step 6**: check if our car was created using the vehicleConstructor Car
+```javascript
+console.log(car1 instanceof Car); // true 
+```

@@ -1,8 +1,3 @@
-// (another) Creational pattern concerned with the notion of creating objects
-// but it doesn't explicitly require us to use a constructor.
-// Instead: Factory can provide a generic interface for creating objects,
-// where we can specify the type of factory object we wish to be created.
-
 // Eg. VehicleFactory
 
 /**
@@ -89,7 +84,7 @@ var car1 = VehicleFactory.prototype.createVehicle({
   doors: 6
 });
 
-// Test to confirm our car was created using the vehicleClass/prototype Car
+// Test to confirm our car was created using the vehicleConstructor/prototype Car
 
 // Outputs: true
 console.log(car1 instanceof Car);
