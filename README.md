@@ -222,3 +222,42 @@ var car2 = carFactory.createVehicle({
 ```javascript
 console.log(car1 instanceof Car); // true 
 ```
+--- 
+
+# 4.2 The Abstract Factory Pattern
+
+_4.2_abstractFactory.js_
+
+It aims to _encapsulate a group of individual factories_ with a common goal. 
+It should be used _where a system must be independent_ from the way the objects it creates are generated or it needs _to work with multiple types of objects_.
+
+**LOOK BETTER and define better**
+
+---
+
+# 5. The Singleton Pattern
+
+_5_singleton.js_
+
+It restricts *instantiation* of a class to a _single object_. 
+Singletons differ from static classes (or objects) as _we can delay their initialization_.
+It is neither the object or "class" that's _returned_ by a Singleton, it's _a structure_.
+> *Think of how closured variables aren't actually closures - the function scope that provides the closure is the closure.*
+What makes the Singleton is the **global access to the instance** (generally through `MySingleton.getInstance()`) as we don't (at least in static languages) call new MySingleton() directly
+- The applicability of the _Singleton pattern_ is described as follows:
+  - There must be exactly **one instance of a class**, and it must be accessible to clients from a well-known access point.
+  - When the sole instance **should be extensible by subclassing**, and clients should be able to use an extended instance without modifying their code.
+  ```javascript
+  mySingleton.getInstance = function(){
+  if ( this._instance == null ) {
+    if ( isFoo() ) {
+       this._instance = new FooSingleton();
+    } else {
+       this._instance = new BasicSingleton();
+    }
+  }
+  return this._instance;
+};
+Here,` getInstance` becomes a little like a _Factory method_ and we don't need to update each point in our code accessing it. `FooSingleton` above would be a subclass of `BasicSingleton` and implement the same interface.
+  
+  ```
