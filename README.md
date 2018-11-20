@@ -218,17 +218,20 @@ var car2 = carFactory.createVehicle({
   doors: 1
 });
 ```
+
 - **Step 6**: check if our car was created using the vehicleConstructor Car
+
 ```javascript
-console.log(car1 instanceof Car); // true 
+console.log(car1 instanceof Car); // true
 ```
---- 
+
+---
 
 # 4.2 The Abstract Factory Pattern
 
 _4.2_abstractFactory.js_
 
-It aims to _encapsulate a group of individual factories_ with a common goal. 
+It aims to _encapsulate a group of individual factories_ with a common goal.
 It should be used _where a system must be independent_ from the way the objects it creates are generated or it needs _to work with multiple types of objects_.
 
 **LOOK BETTER and define better**
@@ -239,25 +242,41 @@ It should be used _where a system must be independent_ from the way the objects 
 
 _5_singleton.js_
 
-It restricts *instantiation* of a class to a _single object_. 
+It restricts _instantiation_ of a class to a _single object_.
 Singletons differ from static classes (or objects) as _we can delay their initialization_.
 It is neither the object or "class" that's _returned_ by a Singleton, it's _a structure_.
-> *Think of how closured variables aren't actually closures - the function scope that provides the closure is the closure.*
-What makes the Singleton is the **global access to the instance** (generally through `MySingleton.getInstance()`) as we don't (at least in static languages) call new MySingleton() directly
+
+> _Think of how closured variables aren't actually closures - the function scope that provides the closure is the closure._
+> What makes the Singleton is the **global access to the instance** (generally through `MySingleton.getInstance()`) as we don't (at least in static languages) call new MySingleton() directly
+
 - The applicability of the _Singleton pattern_ is described as follows:
+
   - There must be exactly **one instance of a class**, and it must be accessible to clients from a well-known access point.
   - When the sole instance **should be extensible by subclassing**, and clients should be able to use an extended instance without modifying their code.
+
   ```javascript
-  mySingleton.getInstance = function(){
-  if ( this._instance == null ) {
-    if ( isFoo() ) {
-       this._instance = new FooSingleton();
-    } else {
-       this._instance = new BasicSingleton();
+  mySingleton.getInstance = function() {
+    if (this._instance == null) {
+      if (isFoo()) {
+        this._instance = new FooSingleton();
+      } else {
+        this._instance = new BasicSingleton();
+      }
     }
-  }
-  return this._instance;
-};
-Here,` getInstance` becomes a little like a _Factory method_ and we don't need to update each point in our code accessing it. `FooSingleton` above would be a subclass of `BasicSingleton` and implement the same interface.
-  
+    return this._instance;
+  };
   ```
+,ml
+Here, `getInstance` becomes a little like a _Factory method_ and we don't need to update each point in our code accessing it. `FooSingleton` above would be a subclass of `BasicSingleton` and implement the same interface.
+
+**The difference between a static instance of a class (object) and a Singleton**:
+whilst *a Singleton* can be implemented as a static instance, it *can also be constructed lazily*, without the need for resources nor memory until this is actually needed.
+> _"The Singleton pattern is useful when exactly one object is needed to coordinate others across a system."_
+
+**!!!** Whilst the Singleton has valid uses, often when we find ourselves _needing it_ in JavaScript it's a sign that we may need to _re-evaluate_ our design.**!!!**
+
+------------------------------------------------
+
+
+
+
